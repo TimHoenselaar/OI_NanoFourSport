@@ -21,11 +21,9 @@ std::ofstream file;
 int display = 0;
 int relativeTime = 0;
 
-UDPClient UDP_visualApp;
-
 void commandLineUpdate(int updatefreq, DataCollector data);
 void WriteToFile(DataCollector data, bool StepDetected, int muscleTension);
-void SendViaUDP(DataCollector data, bool StepDetected, int muscleTension);
+void UDPStringBuilder(DataCollector data, bool StepDetected, int muscleTension, std::string &messageToSend);
 
 int main(int argc, char** argv)
 {
@@ -44,7 +42,7 @@ int main(int argc, char** argv)
 		hub.addListener(&collector);
 
 		// connecting to udp visualised app 
-		UDP_visualApp = UDPClient("127.0.0.1", 1111);
+		UDPClient UDP_visualApp = UDPClient("127.0.0.1", 1111);
 
 		//open file to collect sample data. 
 		file.open(filename);
@@ -96,7 +94,10 @@ int main(int argc, char** argv)
 			// saving, sending and updating data. 
 			commandLineUpdate(20, collector);
 			WriteToFile(collector, StepDetected, armTension);
-			SendViaUDP(collector, StepDetected, armTension);
+
+			std::string UDP_sendMessage;
+			UDPStringBuilder(collector, StepDetected, armTension, UDP_sendMessage);
+			UDP_visualApp.Write(UDP_sendMessage.c_str(), UDP_sendMessage.length());
 
 		}
 	}
@@ -152,7 +153,7 @@ void commandLineUpdate(int updatefreq, DataCollector data)
 			<< "			EMG_DATA[6]		: " << (int)EMG_Data[6] << "\n"
 			<< "			EMG_DATA[7]		: " << (int)EMG_Data[7] << "\n\n\n";
 
-
+		
 		// footer 
 		std::cout << "		Writing to " << filename << "\n";
 	}
@@ -189,7 +190,7 @@ void WriteToFile(DataCollector data, bool StepDetected, int muscleTension)
 
 }
 
-void SendViaUDP(DataCollector data, bool StepDetected, int muscleTension)
+void UDPStringBuilder(DataCollector data, bool StepDetected, int muscleTension , std::string &messageToSend)
 {
 	std::array<int8_t, 8> EMG_Data;
 	data.getEMG(&EMG_Data);
@@ -230,6 +231,10 @@ void SendViaUDP(DataCollector data, bool StepDetected, int muscleTension)
 
 	// time  
 	measurement.append(std::to_string(relativeTime)); measurement.append(" \n");
+	
+	// sending.
+	messageToSend = measurement;
 
-	UDP_visualApp.Write(measurement.c_str(), measurement.length());
+	std::cout << "* ";
+	
 }
