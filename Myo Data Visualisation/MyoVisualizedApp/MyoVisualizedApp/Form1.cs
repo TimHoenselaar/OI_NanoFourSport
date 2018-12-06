@@ -341,8 +341,11 @@ namespace MyoVisualizedApp
                 catch (NullReferenceException)
                 {
                     ArgumentException ex = new ArgumentException("no connection to the server");
-                    server.Stop();
                     //throw ex;
+                }
+                finally
+                {
+                    server.Stop();
                 }
             }
             else

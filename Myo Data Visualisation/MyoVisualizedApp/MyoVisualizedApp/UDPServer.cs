@@ -28,10 +28,15 @@ namespace MyoVisualizedApp
         {
             //Create the server.
             IPEndPoint serverEnd = new IPEndPoint(IPAddress.Any, 1111);
-            _server = new UdpClient(serverEnd);
+
+            if (_server == null)
+            {
+                _server = new UdpClient(serverEnd);
+                //Create the client end.
+                _client = new IPEndPoint(IPAddress.Any, 0);
+            }
             System.Windows.Forms.MessageBox.Show("Waiting for a client...");
-            //Create the client end.
-            _client = new IPEndPoint(IPAddress.Any, 0);
+
 
             //Start listening.
             Thread listenThread = new Thread(new ThreadStart(Listening));
