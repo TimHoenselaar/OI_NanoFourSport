@@ -136,7 +136,9 @@
             "EMG_4",
             "EMG_5",
             "EMG_6",
-            "EMG_7"});
+            "EMG_7",
+            "StepDetect",
+            "MuscleTension"});
             this.comboBox3.Location = new System.Drawing.Point(9, 73);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(88, 21);
@@ -164,7 +166,9 @@
             "EMG_4",
             "EMG_5",
             "EMG_6",
-            "EMG_7"});
+            "EMG_7",
+            "StepDetect",
+            "MuscleTension"});
             this.comboBox2.Location = new System.Drawing.Point(9, 46);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(88, 21);
@@ -193,7 +197,8 @@
             "EMG_5",
             "EMG_6",
             "EMG_7",
-            "gfds"});
+            "StepDetect",
+            "MuscleTension"});
             this.comboBox1.Location = new System.Drawing.Point(9, 19);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(88, 21);
@@ -212,12 +217,12 @@
             this.tableLayoutPanel1.Controls.Add(this.dataLoadBtn, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnStartSimulation, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label1, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnLive, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnStopOnClick, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnClearOnClick, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnStartOnClick, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnLive, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";

@@ -95,6 +95,7 @@ namespace MyoVisualizedApp
                 //string DataLineLive = serialPort.ReadLine();
 
                 //Read from Server
+                try { 
                 string DataLineLive = server.receivedMessage;
 
                 string[] singleLine = DataLineLive.Split(SplitChar);
@@ -335,7 +336,14 @@ namespace MyoVisualizedApp
                     default:
                         break;
                 }
-                
+
+                }
+                catch (NullReferenceException)
+                {
+                    ArgumentException ex = new ArgumentException("no connection to the server");
+                    server.Stop();
+                    //throw ex;
+                }
             }
             else
             {
