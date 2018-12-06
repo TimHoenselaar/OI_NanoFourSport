@@ -1,0 +1,98 @@
+.TH "PeakDetector< T >" 3 "Thu Nov 29 2018" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PeakDetector< T >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <PeakDetector\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPeakDetector\fP (int measureLength, T minimumSampleDifference, T minimumPeakThreshold, T mimimumPeakOffset)"
+.br
+.RI "Peakdetector detects peaks in realtime signals by calculating the direction of the signal\&. "
+.ti -1c
+.RI "\fB~PeakDetector\fP ()"
+.br
+.ti -1c
+.RI "void \fBCalculate\fP (T Sample)"
+.br
+.RI "Calculates the signal if a direction is detected\&. use \fBGetPeak()\fP to see if a peak is detected\&. "
+.ti -1c
+.RI "\fBPeakType\fP \fBGetPeak\fP ()"
+.br
+.RI "Call \fBCalculate(T sample)\fP before Getting the peakvalue\&. "
+.ti -1c
+.RI "T \fBGetRawPeekValue\fP ()"
+.br
+.RI "Call \fBCalculate(T sample)\fP before Getting the RawPeekValue\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class T>
+.br
+class PeakDetector< T >"
+
+.PP
+Definition at line 18 of file PeakDetector\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class T > \fBPeakDetector\fP< T >::\fBPeakDetector\fP (int measureLength, T minimumSampleDifference, T minimumPeakThreshold, T mimimumPeakOffset)"
+
+.PP
+Peakdetector detects peaks in realtime signals by calculating the direction of the signal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImeasureLength\fP Length of the sampling array, has to be an even number\&. 
+.br
+\fIminimumSampleDifference\fP If The sample is lower then previous sampleDifference the sample is discarded\&. 
+.br
+\fIminimumPeakThreshold\fP Minimum Threshold relative to Peakoffset\&. If Sample is lower than Peakthreshold no peak will be detected\&. this value is the same for positive and negative samples\&. 
+.br
+\fImimimumPeakOffset\fP Sets the baseline of the peakthreshold\&. 
+.RE
+.PP
+
+.PP
+Definition at line 19 of file PeakDetector\&.cpp\&.
+.SS "template<class T > \fBPeakDetector\fP< T >::~\fBPeakDetector\fP ()"
+
+.PP
+Definition at line 39 of file PeakDetector\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T > void \fBPeakDetector\fP< T >::Calculate (T sample)"
+
+.PP
+Calculates the signal if a direction is detected\&. use \fBGetPeak()\fP to see if a peak is detected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsample\fP signal to calculate 
+.RE
+.PP
+
+.PP
+Definition at line 61 of file PeakDetector\&.cpp\&.
+.SS "template<class T > \fBPeakType\fP \fBPeakDetector\fP< T >::GetPeak ()"
+
+.PP
+Call \fBCalculate(T sample)\fP before Getting the peakvalue\&. 
+.PP
+Definition at line 45 of file PeakDetector\&.cpp\&.
+.SS "template<class T > T \fBPeakDetector\fP< T >::GetRawPeekValue ()"
+
+.PP
+Call \fBCalculate(T sample)\fP before Getting the RawPeekValue\&. 
+.PP
+Definition at line 52 of file PeakDetector\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

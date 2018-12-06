@@ -1,0 +1,260 @@
+.TH "DataCollector" 3 "Thu Nov 29 2018" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DataCollector
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <DataCollector\&.h>\fP
+.PP
+Inherits DeviceListener\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDataCollector\fP ()"
+.br
+.ti -1c
+.RI "void \fBonOrientationData\fP (myo::Myo *myo, uint64_t timestamp, const myo::Quaternion< float > &rotation)"
+.br
+.ti -1c
+.RI "void \fBonAccelerometerData\fP (myo::Myo *myo, uint64_t timestamp, const myo::Vector3< float > &accel)"
+.br
+.ti -1c
+.RI "void \fBonGyroscopeData\fP (myo::Myo *myo, uint64_t timestamp, const myo::Vector3< float > &gyro)"
+.br
+.ti -1c
+.RI "void \fBonEmgData\fP (myo::Myo *myo, uint64_t timestamp, const int8_t *emg)"
+.br
+.ti -1c
+.RI "void \fBonBatteryLevelReceived\fP (myo::Myo *myo, uint64_t timestamp, uint8_t level)"
+.br
+.ti -1c
+.RI "void \fBonRssi\fP (myo::Myo *myo, uint64_t timestamp, int8_t rssi)"
+.br
+.ti -1c
+.RI "void \fBonConnect\fP (myo::Myo *myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion)"
+.br
+.ti -1c
+.RI "void \fBonDisconnect\fP (myo::Myo *myo, uint64_t timestamp)"
+.br
+.ti -1c
+.RI "myo::Quaternion< float > \fBgetRotation\fP ()"
+.br
+.RI "Gets rotation values\&. (updates automatically if class is conneced to myo::Hub) "
+.ti -1c
+.RI "myo::Vector3< float > \fBgetGyroscope\fP ()"
+.br
+.RI "Gets the Gyroscope values\&. (updates automatically if class is conneced to myo::Hub) "
+.ti -1c
+.RI "myo::Vector3< float > \fBgetAccelerometer\fP ()"
+.br
+.RI "Gets all 8 EMG sensor Values\&. (updates automatically if class is conneced to myo::Hub) "
+.ti -1c
+.RI "void \fBgetEMG\fP (std::array< int8_t, 8 > *data)"
+.br
+.RI "Gets all 8 EMG sensor Values\&. (updates automatically if class is conneced to myo::Hub) "
+.ti -1c
+.RI "float \fBgetRotation_roll\fP ()"
+.br
+.RI "Calculated Roll from rotation data\&. "
+.ti -1c
+.RI "float \fBgetRotation_pitch\fP ()"
+.br
+.RI "Calculated pitch from rotation data\&. "
+.ti -1c
+.RI "float \fBgetRotation_yaw\fP ()"
+.br
+.RI "Calculated yaw from rotation data\&. "
+.ti -1c
+.RI "uint8_t \fBgetBatteryLevel\fP ()"
+.br
+.RI "Battery: This value wont update periodically\&. update via MYO::requestBatteryLevel() "
+.ti -1c
+.RI "int8_t \fBgetBluetoothRange\fP ()"
+.br
+.RI "Bluetooth: This value wont update periodically\&. update via update via MYO::requestRssi();\&. "
+.ti -1c
+.RI "bool \fBgetConnectionStatus\fP ()"
+.br
+.RI "This value is automaticly updated\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 14 of file DataCollector\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "DataCollector::DataCollector ()"
+
+.PP
+Definition at line 5 of file DataCollector\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "myo::Vector3<float> DataCollector::getAccelerometer ()\fC [inline]\fP"
+
+.PP
+Gets all 8 EMG sensor Values\&. (updates automatically if class is conneced to myo::Hub) 
+.PP
+\fBReturns:\fP
+.RS 4
+accel myo::Vector3<float> use raw value : \&.x() \&.y() \&.z()\&. 
+.RE
+.PP
+
+.PP
+Definition at line 59 of file DataCollector\&.h\&.
+.SS "uint8_t DataCollector::getBatteryLevel ()\fC [inline]\fP"
+
+.PP
+Battery: This value wont update periodically\&. update via MYO::requestBatteryLevel() 
+.PP
+\fBReturns:\fP
+.RS 4
+Battery Level in procentage\&. 
+.RE
+.PP
+
+.PP
+Definition at line 79 of file DataCollector\&.h\&.
+.SS "int8_t DataCollector::getBluetoothRange ()\fC [inline]\fP"
+
+.PP
+Bluetooth: This value wont update periodically\&. update via update via MYO::requestRssi();\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+bluetooth range 0-127\&. 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file DataCollector\&.h\&.
+.SS "bool DataCollector::getConnectionStatus ()\fC [inline]\fP"
+
+.PP
+This value is automaticly updated\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+connection status (bool) true = Connected | false = disconnected\&. 
+.RE
+.PP
+
+.PP
+Definition at line 85 of file DataCollector\&.h\&.
+.SS "void DataCollector::getEMG (std::array< int8_t, 8 > * data)\fC [inline]\fP"
+
+.PP
+Gets all 8 EMG sensor Values\&. (updates automatically if class is conneced to myo::Hub) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP returns emg data if *data != null\&. 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file DataCollector\&.h\&.
+.SS "myo::Vector3<float> DataCollector::getGyroscope ()\fC [inline]\fP"
+
+.PP
+Gets the Gyroscope values\&. (updates automatically if class is conneced to myo::Hub) 
+.PP
+\fBReturns:\fP
+.RS 4
+accel myo::Vector3<float> use raw value : \&.x() \&.y() \&.z()\&. 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file DataCollector\&.h\&.
+.SS "myo::Quaternion<float> DataCollector::getRotation ()\fC [inline]\fP"
+
+.PP
+Gets rotation values\&. (updates automatically if class is conneced to myo::Hub) 
+.PP
+\fBReturns:\fP
+.RS 4
+myo::Quaternion<float> use raw value: \&.x() \&.y() \&.z() \&.w()\&. 
+.RE
+.PP
+
+.PP
+Definition at line 53 of file DataCollector\&.h\&.
+.SS "float DataCollector::getRotation_pitch ()\fC [inline]\fP"
+
+.PP
+Calculated pitch from rotation data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pitch in radial\&. 
+.RE
+.PP
+
+.PP
+Definition at line 71 of file DataCollector\&.h\&.
+.SS "float DataCollector::getRotation_roll ()\fC [inline]\fP"
+
+.PP
+Calculated Roll from rotation data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Roll in radial\&. 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file DataCollector\&.h\&.
+.SS "float DataCollector::getRotation_yaw ()\fC [inline]\fP"
+
+.PP
+Calculated yaw from rotation data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Yaw in radial\&. 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file DataCollector\&.h\&.
+.SS "void DataCollector::onAccelerometerData (myo::Myo * myo, uint64_t timestamp, const myo::Vector3< float > & accel)"
+
+.PP
+Definition at line 31 of file DataCollector\&.cpp\&.
+.SS "void DataCollector::onBatteryLevelReceived (myo::Myo * myo, uint64_t timestamp, uint8_t level)"
+
+.PP
+Definition at line 52 of file DataCollector\&.cpp\&.
+.SS "void DataCollector::onConnect (myo::Myo * myo, uint64_t timestamp, myo::FirmwareVersion firmwareVersion)"
+
+.PP
+Definition at line 64 of file DataCollector\&.cpp\&.
+.SS "void DataCollector::onDisconnect (myo::Myo * myo, uint64_t timestamp)"
+
+.PP
+Definition at line 70 of file DataCollector\&.cpp\&.
+.SS "void DataCollector::onEmgData (myo::Myo * myo, uint64_t timestamp, const int8_t * emg)"
+
+.PP
+Definition at line 43 of file DataCollector\&.cpp\&.
+.SS "void DataCollector::onGyroscopeData (myo::Myo * myo, uint64_t timestamp, const myo::Vector3< float > & gyro)"
+
+.PP
+Definition at line 37 of file DataCollector\&.cpp\&.
+.SS "void DataCollector::onOrientationData (myo::Myo * myo, uint64_t timestamp, const myo::Quaternion< float > & rotation)"
+
+.PP
+Definition at line 17 of file DataCollector\&.cpp\&.
+.SS "void DataCollector::onRssi (myo::Myo * myo, uint64_t timestamp, int8_t rssi)"
+
+.PP
+Definition at line 58 of file DataCollector\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

@@ -1,0 +1,60 @@
+.TH "Communicator" 3 "Thu Nov 29 2018" "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Communicator
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Communicator\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCommunicator\fP (uint8_t portNumber, DWORD CBR_baudRate)"
+.br
+.ti -1c
+.RI "\fBCommunicator\fP (uint8_t portNumber, DWORD CBR_baudRate, byte byteSize)"
+.br
+.ti -1c
+.RI "\fBCommunicator\fP (uint8_t portNumbe, DWORD CBR_baudRate, byte byteSize, byte parity)"
+.br
+.ti -1c
+.RI "bool \fBWrite\fP (const char *message, int messageLength)"
+.br
+.ti -1c
+.RI "\fB~Communicator\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 12 of file Communicator\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Communicator::Communicator (uint8_t portNumber, DWORD CBR_baudRate)"
+
+.PP
+Definition at line 5 of file Communicator\&.cpp\&.
+.SS "Communicator::Communicator (uint8_t portNumber, DWORD CBR_baudRate, byte byteSize)"
+
+.PP
+Definition at line 15 of file Communicator\&.cpp\&.
+.SS "Communicator::Communicator (uint8_t portNumbe, DWORD CBR_baudRate, byte byteSize, byte parity)"
+
+.PP
+Definition at line 24 of file Communicator\&.cpp\&.
+.SS "Communicator::~Communicator ()"
+
+.PP
+Definition at line 62 of file Communicator\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Communicator::Write (const char * message, int messageLength)"
+
+.PP
+Definition at line 45 of file Communicator\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

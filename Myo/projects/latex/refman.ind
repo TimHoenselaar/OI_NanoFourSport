@@ -1,0 +1,130 @@
+\begin{theindex}
+
+  \item {\+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES}
+    \subitem {Myo.\+cpp}, 18
+  \item {$\sim$\+Communicator}
+    \subitem {Communicator}, 8
+  \item {$\sim$\+Peak\+Detector}
+    \subitem {Peak\+Detector}, 14
+
+  \indexspace
+
+  \item {Calculate}
+    \subitem {Peak\+Detector}, 14
+  \item {Communicator}, 7
+    \subitem {$\sim$\+Communicator}, 8
+    \subitem {Communicator}, 7
+    \subitem {Write}, 8
+  \item {Communicator.\+cpp}, 17
+  \item {Communicator.\+h}, 17
+  \item {Connected}
+    \subitem {Myo.\+cpp}, 19
+
+  \indexspace
+
+  \item {Data\+Collector}, 8
+    \subitem {Data\+Collector}, 9
+    \subitem {get\+Accelerometer}, 9
+    \subitem {get\+Battery\+Level}, 10
+    \subitem {get\+Bluetooth\+Range}, 10
+    \subitem {get\+Connection\+Status}, 10
+    \subitem {get\+E\+MG}, 10
+    \subitem {get\+Gyroscope}, 11
+    \subitem {get\+Rotation}, 11
+    \subitem {get\+Rotation\+\_\+pitch}, 11
+    \subitem {get\+Rotation\+\_\+roll}, 11
+    \subitem {get\+Rotation\+\_\+yaw}, 11
+    \subitem {on\+Accelerometer\+Data}, 12
+    \subitem {on\+Battery\+Level\+Received}, 12
+    \subitem {on\+Connect}, 12
+    \subitem {on\+Disconnect}, 12
+    \subitem {on\+Emg\+Data}, 12
+    \subitem {on\+Gyroscope\+Data}, 13
+    \subitem {on\+Orientation\+Data}, 13
+    \subitem {on\+Rssi}, 13
+  \item {Data\+Collector.\+cpp}, 17
+  \item {Data\+Collector.\+h}, 17
+
+  \indexspace
+
+  \item {filename}
+    \subitem {Myo.\+cpp}, 19
+
+  \indexspace
+
+  \item {get\+Accelerometer}
+    \subitem {Data\+Collector}, 9
+  \item {get\+Battery\+Level}
+    \subitem {Data\+Collector}, 10
+  \item {get\+Bluetooth\+Range}
+    \subitem {Data\+Collector}, 10
+  \item {get\+Connection\+Status}
+    \subitem {Data\+Collector}, 10
+  \item {get\+E\+MG}
+    \subitem {Data\+Collector}, 10
+  \item {get\+Gyroscope}
+    \subitem {Data\+Collector}, 11
+  \item {Get\+Peak}
+    \subitem {Peak\+Detector}, 15
+  \item {Get\+Raw\+Peek\+Value}
+    \subitem {Peak\+Detector}, 15
+  \item {get\+Rotation}
+    \subitem {Data\+Collector}, 11
+  \item {get\+Rotation\+\_\+pitch}
+    \subitem {Data\+Collector}, 11
+  \item {get\+Rotation\+\_\+roll}
+    \subitem {Data\+Collector}, 11
+  \item {get\+Rotation\+\_\+yaw}
+    \subitem {Data\+Collector}, 11
+
+  \indexspace
+
+  \item {main}
+    \subitem {Myo.\+cpp}, 18
+  \item {Myo.\+cpp}, 18
+    \subitem {\+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES}, 
+		18
+    \subitem {Connected}, 19
+    \subitem {filename}, 19
+    \subitem {main}, 18
+
+  \indexspace
+
+  \item {on\+Accelerometer\+Data}
+    \subitem {Data\+Collector}, 12
+  \item {on\+Battery\+Level\+Received}
+    \subitem {Data\+Collector}, 12
+  \item {on\+Connect}
+    \subitem {Data\+Collector}, 12
+  \item {on\+Disconnect}
+    \subitem {Data\+Collector}, 12
+  \item {on\+Emg\+Data}
+    \subitem {Data\+Collector}, 12
+  \item {on\+Gyroscope\+Data}
+    \subitem {Data\+Collector}, 13
+  \item {on\+Orientation\+Data}
+    \subitem {Data\+Collector}, 13
+  \item {on\+Rssi}
+    \subitem {Data\+Collector}, 13
+
+  \indexspace
+
+  \item {Peak\+Detector}
+    \subitem {$\sim$\+Peak\+Detector}, 14
+    \subitem {Calculate}, 14
+    \subitem {Get\+Peak}, 15
+    \subitem {Get\+Raw\+Peek\+Value}, 15
+    \subitem {Peak\+Detector}, 14
+  \item {Peak\+Detector$<$ T $>$}, 13
+  \item {Peak\+Detector.\+cpp}, 19
+  \item {Peak\+Detector.\+h}, 19
+    \subitem {Peak\+Type}, 19
+  \item {Peak\+Type}
+    \subitem {Peak\+Detector.\+h}, 19
+
+  \indexspace
+
+  \item {Write}
+    \subitem {Communicator}, 8
+
+\end{theindex}

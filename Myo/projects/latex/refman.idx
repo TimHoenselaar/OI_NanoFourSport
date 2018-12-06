@@ -1,0 +1,84 @@
+\indexentry{Communicator@{Communicator}}{7}
+\indexentry{Communicator@{Communicator}!Communicator@{Communicator}}{7}
+\indexentry{Communicator@{Communicator}!Communicator@{Communicator}}{7}
+\indexentry{Communicator@{Communicator}!Communicator@{Communicator}}{7}
+\indexentry{Communicator@{Communicator}!Communicator@{Communicator}}{7}
+\indexentry{Communicator@{Communicator}!Communicator@{Communicator}}{7}
+\indexentry{Communicator@{Communicator}!Communicator@{Communicator}}{7}
+\indexentry{Communicator@{Communicator}!````~Communicator@{$\sim$\+Communicator}}{8}
+\indexentry{````~Communicator@{$\sim$\+Communicator}!Communicator@{Communicator}}{8}
+\indexentry{Communicator@{Communicator}!Write@{Write}}{8}
+\indexentry{Write@{Write}!Communicator@{Communicator}}{8}
+\indexentry{Data\+Collector@{Data\+Collector}}{8}
+\indexentry{Data\+Collector@{Data\+Collector}!Data\+Collector@{Data\+Collector}}{9}
+\indexentry{Data\+Collector@{Data\+Collector}!Data\+Collector@{Data\+Collector}}{9}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+Accelerometer@{get\+Accelerometer}}{9}
+\indexentry{get\+Accelerometer@{get\+Accelerometer}!Data\+Collector@{Data\+Collector}}{9}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+Battery\+Level@{get\+Battery\+Level}}{10}
+\indexentry{get\+Battery\+Level@{get\+Battery\+Level}!Data\+Collector@{Data\+Collector}}{10}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+Bluetooth\+Range@{get\+Bluetooth\+Range}}{10}
+\indexentry{get\+Bluetooth\+Range@{get\+Bluetooth\+Range}!Data\+Collector@{Data\+Collector}}{10}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+Connection\+Status@{get\+Connection\+Status}}{10}
+\indexentry{get\+Connection\+Status@{get\+Connection\+Status}!Data\+Collector@{Data\+Collector}}{10}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+E\+MG@{get\+E\+MG}}{10}
+\indexentry{get\+E\+MG@{get\+E\+MG}!Data\+Collector@{Data\+Collector}}{10}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+Gyroscope@{get\+Gyroscope}}{11}
+\indexentry{get\+Gyroscope@{get\+Gyroscope}!Data\+Collector@{Data\+Collector}}{11}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+Rotation@{get\+Rotation}}{11}
+\indexentry{get\+Rotation@{get\+Rotation}!Data\+Collector@{Data\+Collector}}{11}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+Rotation\+\_\+pitch@{get\+Rotation\+\_\+pitch}}{11}
+\indexentry{get\+Rotation\+\_\+pitch@{get\+Rotation\+\_\+pitch}!Data\+Collector@{Data\+Collector}}{11}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+Rotation\+\_\+roll@{get\+Rotation\+\_\+roll}}{11}
+\indexentry{get\+Rotation\+\_\+roll@{get\+Rotation\+\_\+roll}!Data\+Collector@{Data\+Collector}}{11}
+\indexentry{Data\+Collector@{Data\+Collector}!get\+Rotation\+\_\+yaw@{get\+Rotation\+\_\+yaw}}{11}
+\indexentry{get\+Rotation\+\_\+yaw@{get\+Rotation\+\_\+yaw}!Data\+Collector@{Data\+Collector}}{11}
+\indexentry{Data\+Collector@{Data\+Collector}!on\+Accelerometer\+Data@{on\+Accelerometer\+Data}}{12}
+\indexentry{on\+Accelerometer\+Data@{on\+Accelerometer\+Data}!Data\+Collector@{Data\+Collector}}{12}
+\indexentry{Data\+Collector@{Data\+Collector}!on\+Battery\+Level\+Received@{on\+Battery\+Level\+Received}}{12}
+\indexentry{on\+Battery\+Level\+Received@{on\+Battery\+Level\+Received}!Data\+Collector@{Data\+Collector}}{12}
+\indexentry{Data\+Collector@{Data\+Collector}!on\+Connect@{on\+Connect}}{12}
+\indexentry{on\+Connect@{on\+Connect}!Data\+Collector@{Data\+Collector}}{12}
+\indexentry{Data\+Collector@{Data\+Collector}!on\+Disconnect@{on\+Disconnect}}{12}
+\indexentry{on\+Disconnect@{on\+Disconnect}!Data\+Collector@{Data\+Collector}}{12}
+\indexentry{Data\+Collector@{Data\+Collector}!on\+Emg\+Data@{on\+Emg\+Data}}{12}
+\indexentry{on\+Emg\+Data@{on\+Emg\+Data}!Data\+Collector@{Data\+Collector}}{12}
+\indexentry{Data\+Collector@{Data\+Collector}!on\+Gyroscope\+Data@{on\+Gyroscope\+Data}}{13}
+\indexentry{on\+Gyroscope\+Data@{on\+Gyroscope\+Data}!Data\+Collector@{Data\+Collector}}{13}
+\indexentry{Data\+Collector@{Data\+Collector}!on\+Orientation\+Data@{on\+Orientation\+Data}}{13}
+\indexentry{on\+Orientation\+Data@{on\+Orientation\+Data}!Data\+Collector@{Data\+Collector}}{13}
+\indexentry{Data\+Collector@{Data\+Collector}!on\+Rssi@{on\+Rssi}}{13}
+\indexentry{on\+Rssi@{on\+Rssi}!Data\+Collector@{Data\+Collector}}{13}
+\indexentry{Peak\+Detector$<$ T $>$@{Peak\+Detector$<$ T $>$}}{13}
+\indexentry{Peak\+Detector@{Peak\+Detector}!Peak\+Detector@{Peak\+Detector}}{14}
+\indexentry{Peak\+Detector@{Peak\+Detector}!Peak\+Detector@{Peak\+Detector}}{14}
+\indexentry{Peak\+Detector@{Peak\+Detector}!````~Peak\+Detector@{$\sim$\+Peak\+Detector}}{14}
+\indexentry{````~Peak\+Detector@{$\sim$\+Peak\+Detector}!Peak\+Detector@{Peak\+Detector}}{14}
+\indexentry{Peak\+Detector@{Peak\+Detector}!Calculate@{Calculate}}{14}
+\indexentry{Calculate@{Calculate}!Peak\+Detector@{Peak\+Detector}}{14}
+\indexentry{Peak\+Detector@{Peak\+Detector}!Get\+Peak@{Get\+Peak}}{15}
+\indexentry{Get\+Peak@{Get\+Peak}!Peak\+Detector@{Peak\+Detector}}{15}
+\indexentry{Peak\+Detector@{Peak\+Detector}!Get\+Raw\+Peek\+Value@{Get\+Raw\+Peek\+Value}}{15}
+\indexentry{Get\+Raw\+Peek\+Value@{Get\+Raw\+Peek\+Value}!Peak\+Detector@{Peak\+Detector}}{15}
+\indexentry{Communicator.\+cpp@{Communicator.\+cpp}}{17}
+\indexentry{Communicator.\+h@{Communicator.\+h}}{17}
+\indexentry{Data\+Collector.\+cpp@{Data\+Collector.\+cpp}}{17}
+\indexentry{Data\+Collector.\+h@{Data\+Collector.\+h}}{17}
+\indexentry{Myo.\+cpp@{Myo.\+cpp}}{18}
+\indexentry{Myo.\+cpp@{Myo.\+cpp}!\+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES@{\+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES}}{18}
+\indexentry{\+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES@{\+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES}!Myo.\+cpp@{Myo.\+cpp}}{18}
+\indexentry{Myo.\+cpp@{Myo.\+cpp}!main@{main}}{18}
+\indexentry{main@{main}!Myo.\+cpp@{Myo.\+cpp}}{18}
+\indexentry{Myo.\+cpp@{Myo.\+cpp}!Connected@{Connected}}{19}
+\indexentry{Connected@{Connected}!Myo.\+cpp@{Myo.\+cpp}}{19}
+\indexentry{Myo.\+cpp@{Myo.\+cpp}!filename@{filename}}{19}
+\indexentry{filename@{filename}!Myo.\+cpp@{Myo.\+cpp}}{19}
+\indexentry{Peak\+Detector.\+cpp@{Peak\+Detector.\+cpp}}{19}
+\indexentry{Peak\+Detector.\+h@{Peak\+Detector.\+h}}{19}
+\indexentry{Peak\+Detector.\+h@{Peak\+Detector.\+h}!Peak\+Type@{Peak\+Type}}{19}
+\indexentry{Peak\+Type@{Peak\+Type}!Peak\+Detector.\+h@{Peak\+Detector.\+h}}{19}
+\indexentry{positive@{positive}!Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h@{Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h}}{20}
+\indexentry{Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h@{Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h}!positive@{positive}}{20}
+\indexentry{negative@{negative}!Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h@{Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h}}{20}
+\indexentry{Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h@{Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h}!negative@{negative}}{20}
+\indexentry{none\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detected@{none\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detected}!Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h@{Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h}}{20}
+\indexentry{Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h@{Peak\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detector.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}h}!none\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detected@{none\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize  {7}{8}\selectfont  $\leftarrow \joinrel  \rhook $}}{}{}Detected}}{20}
