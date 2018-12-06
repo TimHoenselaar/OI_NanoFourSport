@@ -71,7 +71,7 @@ int SerialPort::readSerialPort(char *buffer, unsigned int buf_size)
 
 	if (ReadFile(this->handler, buffer, toRead, &bytesRead, NULL)) return bytesRead;
 
-	return 0;
+	return -1;
 }
 
 bool SerialPort::writeSerialPort(char *buffer, unsigned int buf_size)
@@ -88,4 +88,16 @@ bool SerialPort::writeSerialPort(char *buffer, unsigned int buf_size)
 bool SerialPort::isConnected()
 {
 	return this->connected;
+}
+
+std::vector<std::string> SerialPort::Split(char s[], char delimiter)
+{
+	std::vector<std::string> tokens;
+	std::string token;
+	std::istringstream tokenStream(s);
+	while (std::getline(tokenStream, token, delimiter))
+	{
+		tokens.push_back(token);
+	}
+	return tokens;
 }

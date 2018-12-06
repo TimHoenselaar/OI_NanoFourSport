@@ -7,6 +7,9 @@
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <vector>
+#include <sstream>
 
 class SerialPort
 {
@@ -22,6 +25,7 @@ public:
 	int readSerialPort(char *buffer, unsigned int buf_size);
 	bool writeSerialPort(char *buffer, unsigned int buf_size);
 	bool isConnected();
+	std::vector<std::string> Split(char s[], char delimiter);
 };
 
 #endif // SERIALPORT_H
