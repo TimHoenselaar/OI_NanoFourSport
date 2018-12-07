@@ -11,6 +11,7 @@
 #include "DataCollector.h" 
 #include "Communicator.h" 
 #include "PeakDetector.h" 
+#include "MovingAverage.h"
 
 #include "windows.h."
 
@@ -69,11 +70,10 @@ int main(int argc, char** argv)
 		//PeakDetector<float> WaveDetector = PeakDetector<float>(6, (float)0.11, (float)0.4, 0);
 
 		// Add Arm muscle tension detection 
-		// 
-		// 
-		// 
+		MovingAverage filter = MovingAverage(20);
 
 
+		
 		// main program loop 
 		while (1)
 		{
@@ -89,12 +89,19 @@ int main(int argc, char** argv)
 			if (WaveDetector.GetPeak() == PeakType::negative) StepDetected = true;
 
 			// Arm muscle tension detection 
+			//std::array<int8_t, 8> EMG_Data;
+			//collector.getEMG(&EMG_Data);
+			
+
 			int armTension = 0;
-			// 
-			// 
-			// 
-			// 
-			// ---------------- 
+			//for (size_t i = 0; i < 7; i++)
+			//{
+			//	int positiveTension = sqrt(pow(EMG_Data[i], 2));
+				// armTension += positiveTension;
+			//}
+			//filter.add(armTension);
+			//armTension = filter.getCurrentAverage();
+
 
 
 			// saving, sending and updating data. 

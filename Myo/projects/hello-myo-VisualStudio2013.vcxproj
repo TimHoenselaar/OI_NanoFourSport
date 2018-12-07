@@ -166,7 +166,9 @@
   <ItemGroup>
     <ClCompile Include="Communicator.cpp" />
     <ClCompile Include="DataCollector.cpp" />
+    <ClCompile Include="MovingAverage.cpp" />
     <ClCompile Include="Myo.cpp" />
+    <ClCompile Include="MyoMuscleTension.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="PeakDetector.cpp" />
     <ClCompile Include="UDPClient.cpp" />
@@ -174,6 +176,8 @@
   <ItemGroup>
     <ClInclude Include="Communicator.h" />
     <ClInclude Include="DataCollector.h" />
+    <ClInclude Include="MovingAverage.h" />
+    <ClInclude Include="MyoMuscleTension.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PeakDetector.h" />
     <ClInclude Include="UDPClient.h" />
