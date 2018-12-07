@@ -12,6 +12,8 @@
 #include "Communicator.h" 
 #include "PeakDetector.h" 
 
+#include "windows.h."
+
 
 //  
 constexpr auto Connected = true;
@@ -20,6 +22,7 @@ std::ofstream file;
 
 int display = 0;
 int relativeTime = 0;
+
 
 void commandLineUpdate(int updatefreq, DataCollector data);
 void WriteToFile(DataCollector data, bool StepDetected, int muscleTension);
@@ -62,7 +65,8 @@ int main(int argc, char** argv)
 		//-----------------------------------------------------------------------------// 
 
 		// Add the Stepcalculator 
-		PeakDetector<float> WaveDetector = PeakDetector<float>(8, 10, 150, 0);
+		PeakDetector<float> WaveDetector = PeakDetector<float>(8, 5, 40, 0);
+		//PeakDetector<float> WaveDetector = PeakDetector<float>(6, (float)0.11, (float)0.4, 0);
 
 		// Add Arm muscle tension detection 
 		// 
@@ -73,14 +77,16 @@ int main(int argc, char** argv)
 		// main program loop 
 		while (1)
 		{
+			Sleep(10);
 			// Sample time setting 
 			hub.run(1000 / 60);
 			relativeTime = std::clock();
-
+			
 			// Runner StepDetection  
 			WaveDetector.Calculate(collector.getGyroscope().z());
 			bool StepDetected = false;
 			if (WaveDetector.GetPeak() == PeakType::positive) StepDetected = true;
+			if (WaveDetector.GetPeak() == PeakType::negative) StepDetected = true;
 
 			// Arm muscle tension detection 
 			int armTension = 0;
@@ -139,7 +145,7 @@ void commandLineUpdate(int updatefreq, DataCollector data)
 			<< "			Rotation_yaw		: " << data.getRotation_yaw() << "\n"
 			<< "			Gyroscope x		: " << data.getGyroscope().x() << "\n"
 			<< "			Gyroscope y		: " << data.getGyroscope().y() << "\n"
-			<< "			Gyroscope y		: " << data.getGyroscope().z() << "\n"
+			<< "			Gyroscope z		: " << data.getGyroscope().z() << "\n"
 			<< "			Accelerometer x		: " << data.getAccelerometer().x() << "\n"
 			<< "			Accelerometer y		: " << data.getAccelerometer().y() << "\n"
 			<< "			Accelerometer z		: " << data.getAccelerometer().z() << "\n"

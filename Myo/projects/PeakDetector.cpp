@@ -70,8 +70,8 @@ void PeakDetector<T>::Calculate(T sample)
 	std::rotate(RawData.begin(), RawData.begin() + 1, RawData.end());
 
     Direction[measureLength - 1] = currentDirection;
-	
-    if (Total(Direction, measureLength) == 0 && lastDetectedPeek > measureLength)
+	// measurelength /2 added 7-12-2018
+    if (Total(Direction, measureLength) == 0 /*&& lastDetectedPeek >( measureLength - (measureLength/2))*/)
     {
 		if (sample >= mimimumPeakOffset + minimumPeakThreshold)
 		{

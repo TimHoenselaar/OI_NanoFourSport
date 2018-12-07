@@ -36,11 +36,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.dataLoadBtn = new System.Windows.Forms.Button();
             this.startTime = new System.Windows.Forms.Timer(this.components);
-            this.btnStartSimulation = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.gbGyro = new System.Windows.Forms.GroupBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -48,59 +44,16 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnLive = new System.Windows.Forms.Button();
-            this.btnStopOnClick = new System.Windows.Forms.Button();
-            this.btnClearOnClick = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnStartOnClick = new System.Windows.Forms.Button();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.gbGyro.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGraph)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataLoadBtn
-            // 
-            this.dataLoadBtn.Location = new System.Drawing.Point(3, 342);
-            this.dataLoadBtn.Name = "dataLoadBtn";
-            this.dataLoadBtn.Size = new System.Drawing.Size(75, 23);
-            this.dataLoadBtn.TabIndex = 1;
-            this.dataLoadBtn.Text = "Load";
-            this.dataLoadBtn.UseVisualStyleBackColor = true;
-            this.dataLoadBtn.Click += new System.EventHandler(this.btnLoadFile_Click);
-            // 
             // startTime
             // 
             this.startTime.Interval = 1;
             this.startTime.Tick += new System.EventHandler(this.startTime_Tick);
-            // 
-            // btnStartSimulation
-            // 
-            this.btnStartSimulation.Location = new System.Drawing.Point(112, 342);
-            this.btnStartSimulation.Name = "btnStartSimulation";
-            this.btnStartSimulation.Size = new System.Drawing.Size(75, 23);
-            this.btnStartSimulation.TabIndex = 3;
-            this.btnStartSimulation.Text = "Start";
-            this.btnStartSimulation.UseVisualStyleBackColor = true;
-            this.btnStartSimulation.Click += new System.EventHandler(this.btnStartSimulation_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
-            this.label1.Location = new System.Drawing.Point(303, 339);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 309);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
             // 
             // gbGyro
             // 
@@ -214,14 +167,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
             this.tableLayoutPanel1.Controls.Add(this.dataGraph, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.gbGyro, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataLoadBtn, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnStartSimulation, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnStopOnClick, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnClearOnClick, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnStartOnClick, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnLive, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -231,8 +176,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.99251F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0025F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -254,7 +199,7 @@
             this.dataGraph.Legends.Add(legend1);
             this.dataGraph.Location = new System.Drawing.Point(112, 3);
             this.dataGraph.Name = "dataGraph";
-            this.tableLayoutPanel1.SetRowSpan(this.dataGraph, 4);
+            this.tableLayoutPanel1.SetRowSpan(this.dataGraph, 6);
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -273,7 +218,7 @@
             this.dataGraph.Series.Add(series1);
             this.dataGraph.Series.Add(series2);
             this.dataGraph.Series.Add(series3);
-            this.dataGraph.Size = new System.Drawing.Size(570, 303);
+            this.dataGraph.Size = new System.Drawing.Size(570, 364);
             this.dataGraph.TabIndex = 20;
             this.dataGraph.Text = "chart1";
             // 
@@ -287,42 +232,6 @@
             this.btnLive.UseVisualStyleBackColor = true;
             this.btnLive.Click += new System.EventHandler(this.btnLive_Click);
             // 
-            // btnStopOnClick
-            // 
-            this.btnStopOnClick.Location = new System.Drawing.Point(303, 312);
-            this.btnStopOnClick.Name = "btnStopOnClick";
-            this.btnStopOnClick.Size = new System.Drawing.Size(75, 23);
-            this.btnStopOnClick.TabIndex = 18;
-            this.btnStopOnClick.Text = "Stop";
-            this.btnStopOnClick.UseVisualStyleBackColor = true;
-            // 
-            // btnClearOnClick
-            // 
-            this.btnClearOnClick.Location = new System.Drawing.Point(494, 312);
-            this.btnClearOnClick.Name = "btnClearOnClick";
-            this.btnClearOnClick.Size = new System.Drawing.Size(75, 23);
-            this.btnClearOnClick.TabIndex = 19;
-            this.btnClearOnClick.Text = "Clear";
-            this.btnClearOnClick.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 239);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "label3";
-            // 
-            // btnStartOnClick
-            // 
-            this.btnStartOnClick.Location = new System.Drawing.Point(112, 312);
-            this.btnStartOnClick.Name = "btnStartOnClick";
-            this.btnStartOnClick.Size = new System.Drawing.Size(75, 23);
-            this.btnStartOnClick.TabIndex = 17;
-            this.btnStartOnClick.Text = "Start Live";
-            this.btnStartOnClick.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,30 +239,21 @@
             this.ClientSize = new System.Drawing.Size(685, 370);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Live Data Visualizer";
             this.gbGyro.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGraph)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button dataLoadBtn;
         private System.Windows.Forms.Timer startTime;
-        private System.Windows.Forms.Button btnStartSimulation;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gbGyro;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnLive;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.IO.Ports.SerialPort serialPort;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnStopOnClick;
-        private System.Windows.Forms.Button btnClearOnClick;
-        private System.Windows.Forms.Button btnStartOnClick;
         private System.Windows.Forms.DataVisualization.Charting.Chart dataGraph;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;

@@ -47,17 +47,13 @@ namespace MyoVisualizedApp
 
         public void Stop()
         {
-            try
-            {
                 //Stop listening.
                 _listenThread.Join();
                 System.Windows.Forms.MessageBox.Show("Server stops");
                 _server.Close();
                 //Changet state to indicate the server stops.
                 _isServerStarted = false;
-            }
-            catch (Exception excp)
-            { }
+
         }
 
         private void Listening()

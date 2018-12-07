@@ -12,6 +12,8 @@ using System.Windows.Media;
 using LiveCharts.Geared;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.Windows;
 
 namespace MyoVisualizedApp
 {
@@ -34,6 +36,7 @@ namespace MyoVisualizedApp
         public char SplitChar = ' ';
         public char SplitCharLoaded = ',';
         public float roll, pitch, yaw, gyro_x, gyro_y, gyro_z, accel_x, accel_y, accel_z;
+        public Int32 oldTime = 100;
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -47,11 +50,15 @@ namespace MyoVisualizedApp
             dataGraph.Series["Series3"].Points.Clear();
         }
 
+        private void btnStartOnClick_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedAxis1 = comboBox1.Text;
             dataGraph.Series["Series1"].Points.Clear();
-            label2.Text = SelectedAxis1;
         }
 
         public int EMG0, EMG1, EMG2, EMG3, EMG4, EMG5, EMG6, EMG7, stepDetect, muscleTension;
@@ -89,25 +96,22 @@ namespace MyoVisualizedApp
         {
             if (liveData)
             {
-                label1.Text = server.receivedMessage;
-
                 //Read data from COM
                 //string DataLineLive = serialPort.ReadLine();
 
                 //Read from Server
                 try { 
                 string DataLineLive = server.receivedMessage;
-
                 string[] singleLine = DataLineLive.Split(SplitChar);
-                float.TryParse(singleLine[0], out roll);
-                float.TryParse(singleLine[1], out pitch);
-                float.TryParse(singleLine[2], out yaw);
-                float.TryParse(singleLine[3], out gyro_x);
-                float.TryParse(singleLine[4], out gyro_y);
-                float.TryParse(singleLine[5], out gyro_z);
-                float.TryParse(singleLine[6], out accel_x);
-                float.TryParse(singleLine[7], out accel_y);
-                float.TryParse(singleLine[8], out accel_z);
+                float.TryParse(singleLine[0], NumberStyles.Any, CultureInfo.InvariantCulture, out roll);
+                float.TryParse(singleLine[1], NumberStyles.Any, CultureInfo.InvariantCulture, out pitch);
+                float.TryParse(singleLine[2], NumberStyles.Any, CultureInfo.InvariantCulture, out yaw);
+                float.TryParse(singleLine[3], NumberStyles.Any, CultureInfo.InvariantCulture, out gyro_x);
+                float.TryParse(singleLine[4], NumberStyles.Any, CultureInfo.InvariantCulture, out gyro_y);
+                float.TryParse(singleLine[5], NumberStyles.Any, CultureInfo.InvariantCulture, out gyro_z);
+                float.TryParse(singleLine[6], NumberStyles.Any, CultureInfo.InvariantCulture, out accel_x);
+                float.TryParse(singleLine[7], NumberStyles.Any, CultureInfo.InvariantCulture, out accel_y);
+                float.TryParse(singleLine[8], NumberStyles.Any, CultureInfo.InvariantCulture, out accel_z);
                 int.TryParse(singleLine[9], out EMG0);
                 int.TryParse(singleLine[10], out EMG1);
                 int.TryParse(singleLine[11], out EMG2);
@@ -122,11 +126,20 @@ namespace MyoVisualizedApp
 
                 Sample sampleData = new Sample(roll, pitch, yaw, gyro_x, gyro_y, gyro_z, accel_x, accel_y, accel_z, EMG0, EMG1, EMG2, EMG3, EMG4, EMG5, EMG6, EMG7, stepDetect, muscleTension, time);
 
-                label3.Text = sampleData.EMG0 + "";
                 dataGraph.ChartAreas[0].AxisX.Minimum = sampleData.time - 4000;
                 dataGraph.ChartAreas[1].AxisX.Minimum = sampleData.time - 4000;
                 dataGraph.ChartAreas[2].AxisX.Minimum = sampleData.time - 4000;
 
+
+                    if (sampleData.time < oldTime)
+                    {
+                        dataGraph.Series["Series1"].Points.Clear();
+                        dataGraph.Series["Series2"].Points.Clear();
+                        dataGraph.Series["Series3"].Points.Clear();
+
+
+                    }
+                    oldTime = sampleData.time;
                 simTimer += 10;
                 /*
                 if(simTimer > 5000)
@@ -341,11 +354,11 @@ namespace MyoVisualizedApp
                 catch (NullReferenceException)
                 {
                     ArgumentException ex = new ArgumentException("no connection to the server");
+                    dataGraph.Series["Series1"].Points.Clear();
+                    dataGraph.Series["Series2"].Points.Clear();
+                    dataGraph.Series["Series3"].Points.Clear();
+                    startTime.Stop();
                     //throw ex;
-                }
-                finally
-                {
-                    server.Stop();
                 }
             }
             else
@@ -359,7 +372,6 @@ namespace MyoVisualizedApp
                         dataGraph.ChartAreas[2].AxisX.Minimum = simTimer - 11000;
                     }
                     simTimer += 10;
-                    label1.Text = simTimer + "";
                     foreach (Sample a in runData)
                     {
                         if (a.time < simTimer + 10 && a.time > simTimer)
@@ -378,7 +390,6 @@ namespace MyoVisualizedApp
                             }
                         }
                     }
-                    label2.Text = stepCounter + "";
                 }
             }
         } 
