@@ -35,30 +35,28 @@ namespace MyoVisualizedApp
 
         public char SplitChar = ' ';
         public char SplitCharLoaded = ',';
+        public int displayTimer = 4000; //amount of milliseconds that should be displayed (4000 = 4sec)
         public float roll, pitch, yaw, gyro_x, gyro_y, gyro_z, accel_x, accel_y, accel_z;
         public Int32 oldTime = 100;
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectedAxis1 = comboBox1.Text;
+            dataGraph.Series["Series1"].Points.Clear();
+            dataGraph.Series["Series1"].LegendText = comboBox1.Text;
+        }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedAxis2 = comboBox2.Text;
             dataGraph.Series["Series2"].Points.Clear();
+            dataGraph.Series["Series2"].LegendText = comboBox2.Text;
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedAxis3 = comboBox3.Text;
             dataGraph.Series["Series3"].Points.Clear();
-        }
-
-        private void btnStartOnClick_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SelectedAxis1 = comboBox1.Text;
-            dataGraph.Series["Series1"].Points.Clear();
+            dataGraph.Series["Series3"].LegendText = comboBox3.Text;
         }
 
         public int EMG0, EMG1, EMG2, EMG3, EMG4, EMG5, EMG6, EMG7, stepDetect, muscleTension;
@@ -80,11 +78,6 @@ namespace MyoVisualizedApp
 
         private void btnLive_Click(object sender, EventArgs e)
         {
-            /* COM PORT opening
-            string portname = comboBox1.Text;
-            serCom.OpenPort(serialPort, 115200, portname);
-            */
-
             //adding udp connection
             server.Start();
             //starting simulation
@@ -96,9 +89,6 @@ namespace MyoVisualizedApp
         {
             if (liveData)
             {
-                //Read data from COM
-                //string DataLineLive = serialPort.ReadLine();
-
                 //Read from Server
                 try { 
                 string DataLineLive = server.receivedMessage;
@@ -126,42 +116,26 @@ namespace MyoVisualizedApp
 
                 Sample sampleData = new Sample(roll, pitch, yaw, gyro_x, gyro_y, gyro_z, accel_x, accel_y, accel_z, EMG0, EMG1, EMG2, EMG3, EMG4, EMG5, EMG6, EMG7, stepDetect, muscleTension, time);
 
-                dataGraph.ChartAreas[0].AxisX.Minimum = sampleData.time - 4000;
-                dataGraph.ChartAreas[1].AxisX.Minimum = sampleData.time - 4000;
-                dataGraph.ChartAreas[2].AxisX.Minimum = sampleData.time - 4000;
+                dataGraph.ChartAreas[0].AxisX.Minimum = sampleData.time - displayTimer;
+                dataGraph.ChartAreas[1].AxisX.Minimum = sampleData.time - displayTimer;
+                dataGraph.ChartAreas[2].AxisX.Minimum = sampleData.time - displayTimer;
 
-
-                    if (sampleData.time < oldTime)
-                    {
-                        dataGraph.Series["Series1"].Points.Clear();
-                        dataGraph.Series["Series2"].Points.Clear();
-                        dataGraph.Series["Series3"].Points.Clear();
-
-
-                    }
-                    oldTime = sampleData.time;
-                simTimer += 10;
-                /*
-                if(simTimer > 5000)
+                if (sampleData.time < oldTime)
                 {
-                    dataGraph.Series[0].Points.RemoveAt(5);
-                    dataGraph.Series[1].Points.RemoveAt(5);
-                    dataGraph.Series[2].Points.RemoveAt(5);
-
-                    dataGraph.Series[0].Points.RemoveAt(15);
-                    dataGraph.Series[1].Points.RemoveAt(15);
-                    dataGraph.Series[2].Points.RemoveAt(15);
-                    label3.Text = dataGraph.Series[0].Points.Count.ToString();
-                    if (dataGraph.Series[0].Points.Count > 3000)
-                    {
-                        foreach (var series in dataGraph.Series)
-                        {
-                            series.Points.Clear();
-                        }
-                    }
-                    simTimer = 0;
+                    dataGraph.Series["Series1"].Points.Clear();
+                    dataGraph.Series["Series2"].Points.Clear();
+                    dataGraph.Series["Series3"].Points.Clear();
                 }
-                */
+                oldTime = sampleData.time;
+                simTimer += 10;
+                label1.Text = simTimer+"";
+                if (simTimer > 4000)
+                {
+
+                    resetGraphYScale();
+                    simTimer = 0;               
+                }
+                
                 //selecting the right graph for the right axis
                 switch (SelectedAxis1)
                 {
@@ -361,37 +335,6 @@ namespace MyoVisualizedApp
                     //throw ex;
                 }
             }
-            else
-            {
-                if (simTimer < runData.Last().time)
-                {
-                    if(simTimer > 11000)
-                    {
-                        dataGraph.ChartAreas[0].AxisX.Minimum = simTimer - 11000;
-                        dataGraph.ChartAreas[1].AxisX.Minimum = simTimer - 11000;
-                        dataGraph.ChartAreas[2].AxisX.Minimum = simTimer - 11000;
-                    }
-                    simTimer += 10;
-                    foreach (Sample a in runData)
-                    {
-                        if (a.time < simTimer + 10 && a.time > simTimer)
-                        {
-                            
-
-                            if (a.gyro_z > upperThreshold && !aboveUpperThresholdValue)
-                            {
-                                aboveUpperThresholdValue = true;
-                                stepCounter++;
-                            }
-                            else if (a.gyro_z < upperThreshold && aboveUpperThresholdValue)
-                            {
-                                aboveUpperThresholdValue = false;
-                                stepCounter++;
-                            }
-                        }
-                    }
-                }
-            }
         } 
 
         public Int32 time;
@@ -399,75 +342,18 @@ namespace MyoVisualizedApp
         private void btnStartSimulation_Click(object sender, EventArgs e)
         {
             startTime.Start();
-        } 
-
-        private void btnLoadFile_Click(object sender, EventArgs e)
+        }
+        
+        private void resetGraphYScale()
         {
-            string sFileName = "";
-            try
+            dataGraph.Update();
+            for(int i = 0; i <= 2; i++)
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    sFileName = openFileDialog.FileName;
-                }
-                /*
-                dataGraph.Series.Add("Gyroscope");
-                dataGraph.Series["Gyroscope"].ChartType = SeriesChartType.Line;
-                dataGraph.Series.Add("Acceleration");
-                dataGraph.Series["Acceleration"].ChartType = SeriesChartType.Line;
-                dataGraph.Series.Add("Rotation");
-                dataGraph.Series["Rotation"].ChartType = SeriesChartType.Line;
-                */
-                StreamReader reader = new StreamReader(sFileName);
-                while (reader.Peek() > -1)
-                {
-                    string DataLine = reader.ReadLine();
-                    if (DataLine == File.ReadAllLines(sFileName).Last())
-                    {
-                        //break;
-                    }
-                    else
-                    {
-                        string[] singleLine = DataLine.Split(SplitCharLoaded);
-                        float.TryParse(singleLine[0], out roll);
-                        float.TryParse(singleLine[1], out pitch);
-                        float.TryParse(singleLine[2], out yaw);
-                        float.TryParse(singleLine[3], out gyro_x);
-                        float.TryParse(singleLine[4], out gyro_y);
-                        float.TryParse(singleLine[5], out gyro_z);
-                        float.TryParse(singleLine[6], out accel_x);
-                        float.TryParse(singleLine[7], out accel_y);
-                        float.TryParse(singleLine[8], out accel_z);
-                        Int32.TryParse(singleLine[9], out time);
-
-                        Sample sampleData = new Sample(roll, pitch, yaw, gyro_x, gyro_y, gyro_z, accel_x, accel_y, accel_z, time);
-                        runData.Add(sampleData);
-                    }
-                }
-                //set ChartAreas
-                //dataGraph.Series["Gyro"].ChartArea = "GyroArea";
-                //dataGraph.Series["Accel"].ChartArea = "AccelArea";
-                //dataGraph.Series["Rotation"].ChartArea = "RotationArea";
-                //Set axis min/max for all 3 graphs
-                //Gyro
-                //dataGraph.ChartAreas["GyroArea"].AxisY.Minimum = -300;
-                //dataGraph.ChartAreas["GyroArea"].AxisY.Maximum = 300;
-                //Accel
-                //dataGraph.ChartAreas["AccelArea"].AxisY.Minimum = -300;
-                //dataGraph.ChartAreas["AccelArea"].AxisY.Maximum = 300;
-                //Rotation
-                //dataGraph.ChartAreas["RotationArea"].AxisY.Minimum = -2;
-                //dataGraph.ChartAreas["RotationArea"].AxisY.Maximum = 2;
-                //base X line based on maximum time
-                //dataGraph.ChartAreas[0].AxisX.Minimum = 0;
-                //dataGraph.ChartAreas[0].AxisX.Maximum = runData.Last().time;
-            }
-            catch (Exception)
-            {
-
-            }
+                dataGraph.ChartAreas[i].AxisX.Minimum = double.NaN;
+                dataGraph.ChartAreas[i].AxisX.Maximum = double.NaN;
+                dataGraph.ChartAreas[i].AxisY.Minimum = double.NaN;
+                dataGraph.ChartAreas[i].AxisY.Maximum = double.NaN;
+            }     
         }
     }
 }
