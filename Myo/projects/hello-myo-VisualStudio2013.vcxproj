@@ -185,6 +185,7 @@
     <ClCompile Include="Myo.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="PeakDetector.cpp" />
+    <ClCompile Include="Serialport.cpp" />
     <ClCompile Include="UDPClient.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +194,7 @@
     <ClInclude Include="MovingAverage.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PeakDetector.h" />
+    <ClInclude Include="Serialport.h" />
     <ClInclude Include="UDPClient.h" />
   </ItemGroup>
   <ItemGroup>

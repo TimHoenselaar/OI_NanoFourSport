@@ -16,6 +16,7 @@
     <ClCompile Include="UDPClient.cpp">
       <Filter>Communication</Filter>
     </ClCompile>
+    <ClCompile Include="Serialport.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataCollector.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="UDPClient.h">
       <Filter>Communication</Filter>
     </ClInclude>
+    <ClInclude Include="Serialport.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

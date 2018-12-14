@@ -12,6 +12,7 @@
 #include "Communicator.h" 
 #include "PeakDetector.h" 
 #include "MovingAverage.h"
+#include "Serialport.h"
 
 #include "windows.h."
 
@@ -80,12 +81,36 @@ int main(int argc, char** argv)
 		// Arm muscle tension detection
 		MovingAverage averageFilter = MovingAverage(20);
 
+		//accel testttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+		char incomingData[MAX_DATA_LENGTH];
+		const char *port_name = "\\\\.\\COM7";
+		SerialPort arduino(port_name);
+		if (arduino.isConnected()) std::cout << "Connection Established" << std::endl;
+		else std::cout << "ERROR, check port name";
+		char send = '1';
+
+		std::vector<std::string> accelData; //x = 0, y = 1, z = 2
+
 		
 		
 		// main program loop 
 		while (1)
 		{
 			Sleep(10);
+
+			//accellllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+			arduino.writeSerialPort(&send, 1);
+			int read_result = arduino.readSerialPort(incomingData, MAX_DATA_LENGTH);
+			if (read_result != -1)
+			{
+				accelData = arduino.Split(incomingData, ',');
+				for (size_t i = 0; i < 3; i++)
+				{
+					std::cout << accelData[i] << std::endl;
+
+				}
+			}
+
 			// Sample time setting 
 			hub.run(1000 / 60);
 			relativeTime = std::clock();
