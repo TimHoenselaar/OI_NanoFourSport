@@ -1,6 +1,5 @@
+
 #include "UDPClient.h";
-
-
 
 
 /// @brief initializes and starts a UDP client with IP: localhost (127.0.0.1) and port: 1111.
@@ -10,7 +9,7 @@ UDPClient::UDPClient()
 	
 	this->ip = "127.0.0.1";
 	this->port = 1111;
-	Start();
+	server = { 0 };
 }
 
 /// @brief initializes and starts a UDP client with specified ip and port.
@@ -28,8 +27,7 @@ UDPClient::UDPClient(char* ip, int port)
 
 	this->ip = ip;
 	this->port = port;
-
-	Start();	
+	server = { 0 };
 }
 
 
@@ -41,7 +39,7 @@ bool UDPClient::Start()
 	if (running) return false;
 
 	int wsOk = WSAStartup(version, &data);
-	if (wsOk != 0)	throw "Winsock";
+	if (wsOk != 0)	return false;
 
 	// Create a hint structure for the server
 	server.sin_family = AF_INET;				// AF_INET = IPv4 addresses
@@ -50,6 +48,7 @@ bool UDPClient::Start()
 
 	out = socket(AF_INET, SOCK_DGRAM, 0);
 	running = true;
+	return true;
 }
 
 

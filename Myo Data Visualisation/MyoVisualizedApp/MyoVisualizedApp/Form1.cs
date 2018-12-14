@@ -128,11 +128,11 @@ namespace MyoVisualizedApp
                 }
                 oldTime = sampleData.time;
                 simTimer += 10;
-                label1.Text = simTimer+"";
+                //label1.Text = simTimer+"";
                 if (simTimer > 4000)
                 {
 
-                    resetGraphYScale();
+                    //resetGraphYScale();
                     simTimer = 0;               
                 }
                 

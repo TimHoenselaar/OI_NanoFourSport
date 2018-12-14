@@ -20,14 +20,17 @@
 constexpr auto Connected = true;
 const char filename[] = "test.txt ";
 std::ofstream file;
+bool running;
 
 int display = 0;
 int relativeTime = 0;
+int EMG_Data[8];
 
 
 void commandLineUpdate(int updatefreq, DataCollector data);
 void WriteToFile(DataCollector data, bool StepDetected, int muscleTension);
 void UDPStringBuilder(DataCollector data, bool StepDetected, int muscleTension, std::string &messageToSend);
+void cls();
 
 int main(int argc, char** argv)
 {
@@ -47,6 +50,7 @@ int main(int argc, char** argv)
 
 		// connecting to udp visualised app 
 		UDPClient UDP_visualApp = UDPClient("127.0.0.1", 1111);
+		running = UDP_visualApp.Start();
 
 		//open file to collect sample data. 
 		file.open(filename);
@@ -62,17 +66,21 @@ int main(int argc, char** argv)
 		// vibrate once to let the user know initalisation is complete. 
 		myo->vibrate(myo::Myo::vibrationShort);
 
+		// clear EMG_data_holder
+		for (size_t i = 0; i < 8; i++) { EMG_Data[i] = 0; }
+
+		// initalisation complete  
 		// initalisation complete  
 		//-----------------------------------------------------------------------------// 
 
 		// Add the Stepcalculator 
-		PeakDetector<float> WaveDetector = PeakDetector<float>(8, 5, 40, 0);
+		PeakDetector<float> WaveDetector = PeakDetector<float>(8, 5, 100, 0);
 		//PeakDetector<float> WaveDetector = PeakDetector<float>(6, (float)0.11, (float)0.4, 0);
 
-		// Add Arm muscle tension detection 
-		MovingAverage filter = MovingAverage(20);
+		// Arm muscle tension detection
+		MovingAverage averageFilter = MovingAverage(20);
 
-
+		
 		
 		// main program loop 
 		while (1)
@@ -89,20 +97,15 @@ int main(int argc, char** argv)
 			if (WaveDetector.GetPeak() == PeakType::negative) StepDetected = true;
 
 			// Arm muscle tension detection 
-			//std::array<int8_t, 8> EMG_Data;
-			//collector.getEMG(&EMG_Data);
-			
-
-			int armTension = 0;
-			//for (size_t i = 0; i < 7; i++)
-			//{
-			//	int positiveTension = sqrt(pow(EMG_Data[i], 2));
-				// armTension += positiveTension;
-			//}
-			//filter.add(armTension);
-			//armTension = filter.getCurrentAverage();
-
-
+		    collector.getEMG(EMG_Data);
+			double armTension = 0;
+			for (int i = 0; i < 8; i++)
+			{
+				double positiveTension = sqrt(EMG_Data[i]* EMG_Data[i]);
+				armTension = armTension + positiveTension;
+			}
+			averageFilter.add(armTension);
+			armTension = averageFilter.getCurrentAverage();
 
 			// saving, sending and updating data. 
 			commandLineUpdate(20, collector);
@@ -133,7 +136,8 @@ void commandLineUpdate(int updatefreq, DataCollector data)
 	if (display > updatefreq)
 	{
 		display = 0;
-		system("CLS");
+		//system("CLS");
+		cls();
 
 		// header 
 		std::cout << "\n				Nano4Sports - Fontys OI\n\n";
@@ -142,8 +146,8 @@ void commandLineUpdate(int updatefreq, DataCollector data)
 		std::cout << "		Battery: " << (int)data.getBatteryLevel() << "		"
 			<< "	Bluetooth Signal Strength: " << (int)data.getBluetoothRange() << "\n \n";
 
-		std::array<int8_t, 8> EMG_Data;
-		data.getEMG(&EMG_Data);
+
+		data.getEMG(EMG_Data);
 
 		// Measurements  
 		std::cout
@@ -164,7 +168,9 @@ void commandLineUpdate(int updatefreq, DataCollector data)
 			<< "			EMG_DATA[4]		: " << (int)EMG_Data[4] << "\n"
 			<< "			EMG_DATA[5]		: " << (int)EMG_Data[5] << "\n"
 			<< "			EMG_DATA[6]		: " << (int)EMG_Data[6] << "\n"
-			<< "			EMG_DATA[7]		: " << (int)EMG_Data[7] << "\n\n\n";
+			<< "			EMG_DATA[7]		: " << (int)EMG_Data[7] << "\n\n"
+			<< "			UDP running		: " << running << "\n\n\n";
+
 
 		
 		// footer 
@@ -174,8 +180,7 @@ void commandLineUpdate(int updatefreq, DataCollector data)
 
 void WriteToFile(DataCollector data, bool StepDetected, int muscleTension)
 {
-	std::array<int8_t, 8> EMG_Data;
-	data.getEMG(&EMG_Data);
+	data.getEMG(EMG_Data);
 
 	int stepdata = 0;
 	if (StepDetected) stepdata = 1;
@@ -189,14 +194,14 @@ void WriteToFile(DataCollector data, bool StepDetected, int muscleTension)
 		<< data.getAccelerometer().x() << ","
 		<< data.getAccelerometer().y() << ","
 		<< data.getAccelerometer().z() << ","
-		<< (int)EMG_Data[0] << ","
-		<< (int)EMG_Data[1] << ","
-		<< (int)EMG_Data[2] << ","
-		<< (int)EMG_Data[3] << ","
-		<< (int)EMG_Data[4] << ","
-		<< (int)EMG_Data[5] << ","
-		<< (int)EMG_Data[6] << ","
-		<< (int)EMG_Data[7] << ","
+		<< EMG_Data[0] << ","
+		<< EMG_Data[1] << ","
+		<< EMG_Data[2] << ","
+		<< EMG_Data[3] << ","
+		<< EMG_Data[4] << ","
+		<< EMG_Data[5] << ","
+		<< EMG_Data[6] << ","
+		<< EMG_Data[7] << ","
 		<< stepdata << ","				// calculated 
 		<< muscleTension << ","			// calculated 
 		<< relativeTime << "\n";
@@ -205,8 +210,7 @@ void WriteToFile(DataCollector data, bool StepDetected, int muscleTension)
 
 void UDPStringBuilder(DataCollector data, bool StepDetected, int muscleTension , std::string &messageToSend)
 {
-	std::array<int8_t, 8> EMG_Data;
-	data.getEMG(&EMG_Data);
+	data.getEMG(EMG_Data);
 	std::string measurement;
 
 	//Rotation (from gyroscope) 
@@ -225,14 +229,14 @@ void UDPStringBuilder(DataCollector data, bool StepDetected, int muscleTension ,
 	measurement.append(std::to_string(data.getAccelerometer().z())); measurement.append(" ");
 
 	//  some EMG data 
-	measurement.append(std::to_string((int)EMG_Data[0])); measurement.append(" ");
-	measurement.append(std::to_string((int)EMG_Data[1])); measurement.append(" ");
-	measurement.append(std::to_string((int)EMG_Data[2])); measurement.append(" ");
-	measurement.append(std::to_string((int)EMG_Data[3])); measurement.append(" ");
-	measurement.append(std::to_string((int)EMG_Data[4])); measurement.append(" ");
-	measurement.append(std::to_string((int)EMG_Data[5])); measurement.append(" ");
-	measurement.append(std::to_string((int)EMG_Data[6])); measurement.append(" ");
-	measurement.append(std::to_string((int)EMG_Data[7])); measurement.append(" ");
+	measurement.append(std::to_string(EMG_Data[0])); measurement.append(" ");
+	measurement.append(std::to_string(EMG_Data[1])); measurement.append(" ");
+	measurement.append(std::to_string(EMG_Data[2])); measurement.append(" ");
+	measurement.append(std::to_string(EMG_Data[3])); measurement.append(" ");
+	measurement.append(std::to_string(EMG_Data[4])); measurement.append(" ");
+	measurement.append(std::to_string(EMG_Data[5])); measurement.append(" ");
+	measurement.append(std::to_string(EMG_Data[6])); measurement.append(" ");
+	measurement.append(std::to_string(EMG_Data[7])); measurement.append(" ");
 
 	// stepdetect 
 	int stepdata = 0;
@@ -248,6 +252,41 @@ void UDPStringBuilder(DataCollector data, bool StepDetected, int muscleTension ,
 	// sending.
 	messageToSend = measurement;
 
-	std::cout << "* ";
+	std::cout << "*";
 	
+}
+
+void cls()
+{
+	// Get the Win32 handle representing standard output.
+	// This generally only has to be done once, so we make it static.
+	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	COORD topLeft = { 0, 0 };
+
+	// std::cout uses a buffer to batch writes to the underlying console.
+	// We need to flush that to the console because we're circumventing
+	// std::cout entirely; after we clear the console, we don't want
+	// stale buffered text to randomly be written out.
+	std::cout.flush();
+
+	// Figure out the current width and height of the console window
+	if (!GetConsoleScreenBufferInfo(hOut, &csbi)) {
+		// TODO: Handle failure!
+		abort();
+	}
+	DWORD length = csbi.dwSize.X * csbi.dwSize.Y;
+
+	DWORD written;
+
+	// Flood-fill the console with spaces to clear it
+	FillConsoleOutputCharacter(hOut, TEXT(' '), length, topLeft, &written);
+
+	// Reset the attributes of every character to the default.
+	// This clears all background colour formatting, if any.
+	FillConsoleOutputAttribute(hOut, csbi.wAttributes, length, topLeft, &written);
+
+	// Move the cursor back to the top left for the next sequence of writes
+	SetConsoleCursorPosition(hOut, topLeft);
 }

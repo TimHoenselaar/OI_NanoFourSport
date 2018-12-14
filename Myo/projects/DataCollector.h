@@ -12,8 +12,8 @@
  *			   to initalise the class from recieving data you have to put this 
  *			   line afer Myo initialisation: myo::hub.addListener(&datacollector); 
  *  @author    Ryan Vrosch
- *  @version   1.1
- *  @date      2018-11-30
+ *  @version   1.2
+ *  @date      2018-12-08
  *  @warning   Some params dont update themselves, and need to be called via myo::Myo.
  *  @copyright GNU Public License.
  */
@@ -26,7 +26,7 @@ private:
 	myo::Quaternion<float> rotation_r;
 	myo::Vector3<float> gyroscope;
 	myo::Vector3<float> accelerometer;
-	std::array<int8_t, 8> EMG;
+	int EMG[8];
 
 	// calculated data
 	float	rotation_roll;
@@ -65,10 +65,12 @@ public:
 	/// @return accel myo::Vector3<float> use raw value : .x() .y() .z().
 	myo::Vector3<float>		getAccelerometer()	{ return accelerometer; }
 	/// @brief Gets all 8 EMG sensor Values. (updates automatically if class is conneced to myo::Hub)
-	/// @param[in,out] data  returns emg data if *data != null.
-	void					getEMG( std::array<int8_t, 8> *data)
-												{ if (data != NULL)	*data = EMG; }
+	/// @param[in,out] Does not check for arraylength, it needs to be 8 or more. 
+	void					getEMG(int *data)	{ if (data == NULL) return;
+												for (int i = 0; i < 8; i++) { data[i] = EMG[i]; }
 
+	}
+												
 	// calculated data
 	/// @brief  Calculated Roll from rotation data
 	/// @return Roll in radial.

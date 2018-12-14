@@ -10,7 +10,11 @@ DataCollector::DataCollector()
 	rotation_yaw		= 0;
 	batteryLevel		= 0;
 	BluetoothRange		= 0;
-	EMG.empty();
+
+	for (int i = 0; i < 8; i++)
+	{
+		EMG[i] = 0;
+	}
 }
 
 
@@ -71,3 +75,5 @@ void DataCollector::onDisconnect(myo::Myo* myo, uint64_t timestamp)
 {
 	connectionStatus = false;
 }
+
+
