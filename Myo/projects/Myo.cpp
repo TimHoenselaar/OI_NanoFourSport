@@ -26,6 +26,7 @@ bool running;
 int display = 0;
 int relativeTime = 0;
 int EMG_Data[8];
+std::vector<int> vect = { 0,0,0 };
 
 
 void commandLineUpdate(int updatefreq, DataCollector data);
@@ -85,11 +86,15 @@ int main(int argc, char** argv)
 		char incomingData[MAX_DATA_LENGTH];
 		const char *port_name = "\\\\.\\COM7";
 		SerialPort arduino(port_name);
-		if (arduino.isConnected()) std::cout << "Connection Established" << std::endl;
-		else std::cout << "ERROR, check port name";
+		if (arduino.isConnected())
+		{
+			std::cout << "Connection Established" << std::endl;
+		}
+		else
+		{
+			std::cout << "ERROR, check port name";
+		}
 		char send = '1';
-
-		std::vector<std::string> accelData; //x = 0, y = 1, z = 2
 
 		
 		
@@ -103,11 +108,10 @@ int main(int argc, char** argv)
 			int read_result = arduino.readSerialPort(incomingData, MAX_DATA_LENGTH);
 			if (read_result != -1)
 			{
-				accelData = arduino.Split(incomingData, ',');
-				for (size_t i = 0; i < 3; i++)
+				vect = arduino.Split(incomingData, ',');
+				for (int i = 0; i < vect.size(); i++)
 				{
-					std::cout << accelData[i] << std::endl;
-
+					std::cout << vect.at(i) << std::endl;
 				}
 			}
 
@@ -270,6 +274,12 @@ void UDPStringBuilder(DataCollector data, bool StepDetected, int muscleTension ,
 
 	// muscleTension 
 	measurement.append(std::to_string(muscleTension)); measurement.append(" ");
+
+	//Accelerometer from arduino
+	measurement.append(std::to_string(vect.at(0))); measurement.append(" ");
+	//measurement.append(std::to_string(vect.at(1))); measurement.append(" ");
+	//measurement.append(std::to_string(vect.at(2))); measurement.append(" ");
+	measurement.append("test"); measurement.append(" ");
 
 	// time  
 	measurement.append(std::to_string(relativeTime)); measurement.append(" \n");

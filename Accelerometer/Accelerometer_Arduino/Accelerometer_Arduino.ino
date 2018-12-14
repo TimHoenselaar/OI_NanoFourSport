@@ -40,13 +40,13 @@ void readAccel()
   int x = (((int16_t)_buff[1]) << 8) | _buff[0];
   int y = (((int)_buff[3]) << 8) | _buff[2];
   int z = (((int)_buff[5]) << 8) | _buff[4];
-  Serial.print("#");
+  //Serial.print("#");
   Serial.print( x );
   Serial.print(",");
   Serial.print( y );
   Serial.print(",");
-  Serial.print( z );
-  Serial.println("%");
+  Serial.println( z );
+  //Serial.println("%");
 }
 
 

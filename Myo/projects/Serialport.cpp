@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "SerialPort.h"
+#include <iostream>
 
 SerialPort::SerialPort(const char *portName)
 {
@@ -90,14 +91,23 @@ bool SerialPort::isConnected()
 	return this->connected;
 }
 
-std::vector<std::string> SerialPort::Split(char s[], char delimiter)
+std::vector<int> SerialPort::Split(char s[], char delimiter)
 {
-	std::vector<std::string> tokens;
-	std::string token;
-	std::istringstream tokenStream(s);
-	while (std::getline(tokenStream, token, delimiter))
+	std::vector<int> vect;
+
+	std::stringstream ss(s);
+
+	int i;
+
+	while (ss >> i)
 	{
-		tokens.push_back(token);
+		vect.push_back(i);
+
+		if (ss.peek() == ',')
+		{
+			ss.ignore();
+		}
 	}
-	return tokens;
+
+	return vect;
 }
