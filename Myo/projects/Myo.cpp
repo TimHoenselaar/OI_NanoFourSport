@@ -26,7 +26,8 @@ bool running;
 int display = 0;
 int relativeTime = 0;
 int EMG_Data[8];
-std::vector<int> vect = { 0,0,0 };
+int Accel[3];
+
 
 
 void commandLineUpdate(int updatefreq, DataCollector data);
@@ -85,6 +86,7 @@ int main(int argc, char** argv)
 		//accel testttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 		char incomingData[MAX_DATA_LENGTH];
 		const char *port_name = "\\\\.\\COM7";
+		std::vector<int> vect = { 0,0,0 };
 		SerialPort arduino(port_name);
 		if (arduino.isConnected())
 		{
@@ -111,7 +113,8 @@ int main(int argc, char** argv)
 				vect = arduino.Split(incomingData, ',');
 				for (int i = 0; i < vect.size(); i++)
 				{
-					std::cout << vect.at(i) << std::endl;
+					//std::cout << vect.at(i) << std::endl;
+					Accel[i] = vect.at(i);
 				}
 			}
 
@@ -197,7 +200,10 @@ void commandLineUpdate(int updatefreq, DataCollector data)
 			<< "			EMG_DATA[4]		: " << (int)EMG_Data[4] << "\n"
 			<< "			EMG_DATA[5]		: " << (int)EMG_Data[5] << "\n"
 			<< "			EMG_DATA[6]		: " << (int)EMG_Data[6] << "\n"
-			<< "			EMG_DATA[7]		: " << (int)EMG_Data[7] << "\n\n"
+			<< "			EMG_DATA[7]		: " << (int)EMG_Data[7] << "\n"
+			<< "			Accel[0]		: " << (int)Accel[0]	<< "\n"
+			<< "			Accel[1]		: " << (int)Accel[1]    << "\n"
+			<< "			Accel[2]		: " << (int)Accel[2]    << "\n\n"
 			<< "			UDP running		: " << running << "\n\n\n";
 
 
@@ -276,10 +282,9 @@ void UDPStringBuilder(DataCollector data, bool StepDetected, int muscleTension ,
 	measurement.append(std::to_string(muscleTension)); measurement.append(" ");
 
 	//Accelerometer from arduino
-	measurement.append(std::to_string(vect.at(0))); measurement.append(" ");
-	//measurement.append(std::to_string(vect.at(1))); measurement.append(" ");
-	//measurement.append(std::to_string(vect.at(2))); measurement.append(" ");
-	measurement.append("test"); measurement.append(" ");
+	measurement.append(std::to_string(Accel[0])); measurement.append(" ");
+	measurement.append(std::to_string(Accel[1])); measurement.append(" ");
+	measurement.append(std::to_string(Accel[2])); measurement.append(" ");
 
 	// time  
 	measurement.append(std::to_string(relativeTime)); measurement.append(" \n");
