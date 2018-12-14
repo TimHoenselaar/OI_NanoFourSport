@@ -59,7 +59,7 @@ namespace MyoVisualizedApp
             dataGraph.Series["Series3"].LegendText = comboBox3.Text;
         }
 
-        public int EMG0, EMG1, EMG2, EMG3, EMG4, EMG5, EMG6, EMG7, stepDetect, muscleTension;
+        public int EMG0, EMG1, EMG2, EMG3, EMG4, EMG5, EMG6, EMG7, accel_x_arduino, accel_y_arduino, accel_z_arduino, stepDetect, muscleTension;
 
         int simTimer = 0;
 
@@ -112,7 +112,10 @@ namespace MyoVisualizedApp
                 int.TryParse(singleLine[16], out EMG7);
                 int.TryParse(singleLine[17], out stepDetect);
                 int.TryParse(singleLine[18], out muscleTension);
-                Int32.TryParse(singleLine[19], out time);
+                int.TryParse(singleLine[19], out accel_x_arduino);
+                int.TryParse(singleLine[20], out accel_y_arduino);
+                int.TryParse(singleLine[20], out accel_z_arduino);
+                Int32.TryParse(singleLine[21], out time);
 
                 Sample sampleData = new Sample(roll, pitch, yaw, gyro_x, gyro_y, gyro_z, accel_x, accel_y, accel_z, EMG0, EMG1, EMG2, EMG3, EMG4, EMG5, EMG6, EMG7, stepDetect, muscleTension, time);
 
@@ -190,6 +193,15 @@ namespace MyoVisualizedApp
                     case "EMG_7":
                         dataGraph.Series["Series1"].Points.AddXY(sampleData.time, sampleData.EMG7);
                         break;
+                    case "accel_x_arduino":
+                        dataGraph.Series["Series1"].Points.AddXY(sampleData.time, sampleData.accel_x_arduino);
+                        break;
+                    case "accel_y_arduino":
+                        dataGraph.Series["Series1"].Points.AddXY(sampleData.time, sampleData.accel_y_arduino);
+                        break;
+                    case "accel_z_arduino":
+                        dataGraph.Series["Series1"].Points.AddXY(sampleData.time, sampleData.accel_z_arduino);
+                        break;
                     case "StepDetect":
                         dataGraph.Series["Series1"].Points.AddXY(sampleData.time, sampleData.stepDetect);
                         break;
@@ -252,6 +264,15 @@ namespace MyoVisualizedApp
                     case "EMG_7":
                         dataGraph.Series["Series2"].Points.AddXY(sampleData.time, sampleData.EMG7);
                         break;
+                    case "accel_x_arduino":
+                        dataGraph.Series["Series2"].Points.AddXY(sampleData.time, sampleData.accel_x_arduino);
+                        break;
+                    case "accel_y_arduino":
+                        dataGraph.Series["Series2"].Points.AddXY(sampleData.time, sampleData.accel_y_arduino);
+                        break;
+                    case "accel_z_arduino":
+                        dataGraph.Series["Series2"].Points.AddXY(sampleData.time, sampleData.accel_z_arduino);
+                        break;
                     case "StepDetect":
                         dataGraph.Series["Series2"].Points.AddXY(sampleData.time, sampleData.stepDetect);
                         break;
@@ -313,6 +334,15 @@ namespace MyoVisualizedApp
                         break;
                     case "EMG_7":
                         dataGraph.Series["Series3"].Points.AddXY(sampleData.time, sampleData.EMG7);
+                        break;
+                    case "accel_x_arduino":
+                        dataGraph.Series["Series3"].Points.AddXY(sampleData.time, sampleData.accel_x_arduino);
+                        break;
+                    case "accel_y_arduino":
+                        dataGraph.Series["Series3"].Points.AddXY(sampleData.time, sampleData.accel_y_arduino);
+                        break;
+                    case "accel_z_arduino":
+                        dataGraph.Series["Series3"].Points.AddXY(sampleData.time, sampleData.accel_z_arduino);
                         break;
                     case "StepDetect":
                         dataGraph.Series["Series3"].Points.AddXY(sampleData.time, sampleData.stepDetect);

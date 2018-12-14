@@ -77,7 +77,10 @@
             "EMG_6",
             "EMG_7",
             "StepDetect",
-            "MuscleTension"});
+            "MuscleTension",
+            "accel_x_arduino",
+            "accel_y_arduino",
+            "accel_z_arduino"});
             this.comboBox3.Location = new System.Drawing.Point(3, 281);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(103, 21);
@@ -108,7 +111,10 @@
             "EMG_6",
             "EMG_7",
             "StepDetect",
-            "MuscleTension"});
+            "MuscleTension",
+            "accel_x_arduino",
+            "accel_y_arduino",
+            "accel_z_arduino"});
             this.comboBox2.Location = new System.Drawing.Point(3, 159);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(103, 21);
@@ -139,7 +145,10 @@
             "EMG_6",
             "EMG_7",
             "StepDetect",
-            "MuscleTension"});
+            "MuscleTension",
+            "accel_x_arduino",
+            "accel_y_arduino",
+            "accel_z_arduino"});
             this.comboBox1.Location = new System.Drawing.Point(3, 37);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(103, 21);
